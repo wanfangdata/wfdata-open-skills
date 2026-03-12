@@ -1,11 +1,10 @@
 ---
 name: wfdata-search
-description: 万方数据搜索技能，支持文献检索、文档详情获取和向量语义搜索
+description: "用于从万方数据检索文献"
 reference:
   - reference/api-catalog.md
 ---
-
-# 万方数据搜索技能 (wfdata-search)
+# 万方数据搜索技能
 
 本技能提供万方数据平台的文献检索能力，支持：
 
@@ -26,15 +25,11 @@ reference:
 
 ---
 
-# 工具列表
+## 工具脚本
 
-本技能提供三个核心工具：
-
-| 工具 | 功能 |
-|----|----|
-| wfdata_query | 文献关键词检索 |
-| wfdata_get_doc | 获取文献详情 |
-| wfdata_vector_search | 向量语义检索 |
+- `scripts/wf_data_query.py` - 文献关键词检索
+- `scripts/wf_data_get_doc.py` - 获取文献详情
+- `scripts/wf_data_vector_search.py` - 向量语义检索
 
 ---
 
@@ -52,7 +47,7 @@ reference:
 
 # 工具说明
 
-## 1. 文献检索 (wfdata_query)
+## 1. 文献检索 (使用wf_data_query)
 
 搜索万方数据库中的文献资源。
 
@@ -71,15 +66,6 @@ reference:
 | rows | int | 否 | 返回条数 |
 | start | int | 否 | 起始位置 |
 
-### 示例
-
-```python
-result = await wfdata_query(
-    query="人工智能,深度学习",
-    collections=["OpenPeriodical","OpenThesis"],
-    rows=20
-)
-````
 
 ### 可用 collections
 
@@ -107,7 +93,7 @@ result = await wfdata_query(
 
 ---
 
-# 2. 获取文献详情 (wfdata_get_doc)
+# 2. 获取文献详情 (wf_data_get_doc)
 
 根据文献 ID 获取文献详细信息。
 
@@ -118,18 +104,10 @@ result = await wfdata_query(
 | collection | string | 是  | 文献资源库 |
 | doc_id     | string | 是  | 文献 ID |
 
-### 示例
-
-```python
-result = await wfdata_get_doc(
-    collection="OpenPeriodical",
-    doc_id="dbch202004054"
-)
-```
 
 ---
 
-# 3. 向量语义搜索 (wfdata_vector_search)
+# 3. 向量语义搜索 (wf_data_vector_search)
 
 通过自然语言进行语义搜索，系统会匹配语义相似的论文片段。
 
@@ -146,14 +124,7 @@ result = await wfdata_get_doc(
 | query_text  | string   | 是  | 自然语言查询 |
 | collections | string[] | 否  | 全文资源库  |
 
-### 示例
 
-```python
-result = await wfdata_vector_search(
-    query_text="自然语言处理在医疗领域的应用",
-    collections=["OpenPeriodicalFulltext","OpenThesisFulltext"]
-)
-```
 
 ### 可用全文 collections
 
@@ -176,11 +147,11 @@ result = await wfdata_vector_search(
 ```
 用户问题
    ↓
-wfdata_vector_search（语义检索）
+wf_data_vector_search（语义检索）
    ↓
 获取文献ID
    ↓
-wfdata_get_doc（获取文献详情）
+wf_data_get_doc（获取文献详情）
    ↓
 整理研究结果
 ```
@@ -190,11 +161,11 @@ wfdata_get_doc（获取文献详情）
 ```
 用户关键词
    ↓
-wfdata_query
+wf_data_query
    ↓
 获取文献ID
    ↓
-wfdata_get_doc
+wf_data_get_doc
 ```
 
 ---
