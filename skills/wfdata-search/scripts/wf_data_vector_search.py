@@ -6,20 +6,19 @@ import aiohttp
 import requests
 
 
+
 # API 配置
-WFDATA_BASE_URL = "https://api.wanfangdata.com.cn"
+WFDATA_BASE_URL = "http://api.wfdata.com"
 
 # 从环境变量获取认证信息
 WFDATA_APP_KEY = os.environ.get("WFDATA_APP_KEY", "")
-WFDATA_APP_CODE = os.environ.get("WFDATA_APP_CODE", "")
+
 
 
 def get_headers() -> Dict[str, str]:
     """获取请求头"""
     return {
-        "X-Ca-AppKey": WFDATA_APP_KEY,
-        "Authorization": f"APPCODE {WFDATA_APP_CODE}",
-        "Content-Type": "application/json"
+        "X-App-Key": WFDATA_APP_KEY,
     }
 
 # 向量搜索可用的 collections
@@ -114,7 +113,7 @@ async def main():
 
     parser = argparse.ArgumentParser(description='万方数据向量语义搜索')
     parser.add_argument('query_text', help='自然语言查询文本')
-    parser.add_argument('--collections', default=["OpenPeriodicalFulltext"], help='文献类型列表，可选值见 VECTOR_COLLECTIONS')
+    parser.add_argument('--collections', default=["ALL_S"], help='文献类型列表，可选值见 VECTOR_COLLECTIONS')
 
     args = parser.parse_args()
     result = await wf_data_vector_search(query_text=args.query_text,collections=args.collections)

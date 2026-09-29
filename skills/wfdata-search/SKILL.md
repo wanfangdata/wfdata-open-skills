@@ -39,9 +39,7 @@ reference:
 
 | Header | 说明 |
 |------|------|
-| X-Ca-AppKey | 应用 Key |
-| Authorization | APPCODE 认证码 |
-| Content-Type | application/json |
+| X-App-Key | 应用 Key |
 
 ---
 

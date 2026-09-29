@@ -1,6 +1,6 @@
 # 开放文献检索平台 API Reference
 
-**Base URL**：`https://api.wanfangdata.com.cn`
+**Base URL**：`http://api.wfdata.com`
 **请求方式**：`POST`
 **Content-Type**：`application/json`
 

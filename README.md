@@ -147,10 +147,16 @@ SKILLS.md
 
 | Header        | 说明               |
 | ------------- | ---------------- |
-| X-Ca-AppKey   | 应用 Key           |
-| Authorization | APPCODE          |
-| Content-Type  | application/json |
+| X-App-Key | 应用 Key |
 
+
+# 获取API认证信息
+
+* 登录后在Skill详情页一键订阅
+* 在我的订阅中管理APP_KEY
+* 获取后配置相应环境变量
+  * WFDATA_APP_KEY="your-key-here"
+  
 ---
 
 # 示例

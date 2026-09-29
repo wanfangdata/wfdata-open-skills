@@ -6,22 +6,21 @@ import aiohttp
 import requests
 
 
+
+
 # API 配置
-WFDATA_BASE_URL = "https://api.wanfangdata.com.cn"
+WFDATA_BASE_URL = "http://api.wfdata.com"#"http://apis.rd.wanfangdata.com.cn"#
 
 # 从环境变量获取认证信息
 WFDATA_APP_KEY = os.environ.get("WFDATA_APP_KEY", "")
-WFDATA_APP_CODE = os.environ.get("WFDATA_APP_CODE", "")
+
 
 
 def get_headers() -> Dict[str, str]:
     """获取请求头"""
     return {
-        "X-Ca-AppKey": WFDATA_APP_KEY,
-        "Authorization": f"APPCODE {WFDATA_APP_CODE}",
-        "Content-Type": "application/json"
+        "X-App-Key": WFDATA_APP_KEY,
     }
-
 
 # 可用的 collections 映射
 COLLECTIONS = {
@@ -157,7 +156,7 @@ async def wf_data_query(
         else:
             resolved_collections.append(col)  # 保持原样，让 API 报错
 
-    url = f"{WFDATA_BASE_URL}/openwanfang/getQuery"
+    url = f"{WFDATA_BASE_URL}/openwanfang/getQuery"#search/query"
 
     payload = {
         "collections": resolved_collections,
